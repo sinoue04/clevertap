@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Spin</title>
+	<style>
+		a:link, a:visited {
+			color: #0052FF;
+		}
+		
+		body {
+			color: #333333;
+			font-family: "SF Pro Display", "Roboto", sans-serif;
+			line-height: 1.5;
+			font-size: 17px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 23px;
+			margin: 0px 8px 16px 8px; /* avoid the 8px default margin applied by webkit */
+			text-align: left;
+		}
+		
+		button {
+			display: block;
+			background-color: #0052FF;
+			border: none;
+			border-radius: 22px;
+			color: white;
+			font-weight: 600;
+			height: 44px;
+			margin: 12px 36px;
+			padding: 0px 32px;
+			text-align: center;
+			width: calc(100% - 72px);
+		}
+		
+		em {
+			color: #0052FF; /* Blue color for the highlighted text */
+			font-style: normal;
+		}
+		
+		em.red {
+			color: #EC4B4A; /* Red color for the highlighted text */
+		}
+		
+		.title {
+			font-size: 25px;
+			font-weight: 600;
+			line-height: 30px;
+			color: black;
+			margin-bottom: 16px;
+		}
+		
+		.spacer {
+			margin: 40px 0px;
+		}
+		
+		.spacer.small {
+			margin: 24px 0px;
+		}
+		
+		.subtitle {
+			font-size: 19px;
+			font-style: normal;
+			font-weight: 600;
+			line-height: 23px;
+			margin-top: 4px;
+			margin-bottom: 4px;
+		}
+		
+		p {
+			margin-top: 12px;
+			margin-bottom: 12px;
+		}
+		
+		ul.benefits {
+			list-style-type: none;
+			padding: 0px;
+		}
+
+		/* List item with a custom bullet point image */
+		ul.benefits li {
+            align-items: center;
+			background-image: url(https://assets.prod.leanplum.com/app_a1Ms09t5gNvuFBVBEg39bBxTnR7fNWKmsoqoz8UKEJ0/YmVuZWZpdHNfY2hlY2ttYXJrX2ltZ19ibGFjazEuc3Zn);
+			background-position: left center;
+			background-repeat: no-repeat;
+			background-size: 44px auto;
+			display: flex;
+			min-height: 44px;
+			padding: 10px 0px 10px 54px; /* 44px + 10px */
+		}
+	</style>
+</head>
+<body>
+	<p class="title"> Earn and Withdraw SG with 4 Lucky Wheels! </p>
+	<ul class="benefits">
+		<li>
+			<div>
+				<div class="subtitle">$1M Jackpot Wheel:</div>
+				Up to $1M jackpot
+			</div>
+		</li>
+		<li>
+			<div>
+				<div class="subtitle">The Lucky Wheel:</div>
+				Chance to win $10K
+			</div>
+		</li>
+		<li>
+			<div>
+				<div class="subtitle">High-Roller Wheel:</div>
+				97%+ odds for withdrawable SG
+			</div>
+		</li>
+		<li>
+			<div>
+				<div class="subtitle">The 1000x Wheel:</div>
+				Bet $1 — hit anywhere from 2x to a 1,000x jackpot
+			</div>
+		</li>
+	</ul>
+	<p> — Which one would you choose? </p>
+	<p> Daily 5+ spins on any wheel will boost your win rate! </p>
+	
+	<div class="spacer"></div>
+	
+	<p class="title"> 🔥 Want to win more? </p>
+	<p> The world’s only reward game with rules like these: </p>
+	<div class="spacer small"></div>
+	<div>
+		<p> ⦿ 💰 Cumulative SPIN payments increase your odds. </p>
+		<p> ⦿ 🏆 Your winning chances increase on the days your rank goes up in the Battle League. </p>
+		<p> ⦿ 💥 Invite more friends = higher odds. </p>
+	</div>
+	<div class="spacer small"></div>
+	<p> And that’s just the surface. Hidden bonuses. Secret mechanics. The more you play, the more you win. </p>
+	<p> 👉 Don’t miss your chance — your next big win could be one spin away! </p>
+	<div class="spacer"></div>
+	
+</body>
+</html>
