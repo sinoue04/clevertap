@@ -28,7 +28,7 @@
       // 🛍️ Claim button settings (shown after the spin, optional)
       claimButton: {
         enabled: true,
-        text: "Collect Now",
+        text: "Use Free Spins",
         background: "#F4357D",
         color: "#ffffff",
         url: "wzkr://thisleadstonowhere",
@@ -123,7 +123,7 @@
           text: "Exclusive Code",
           value: "EXCLUSIVE",
           subtitle: "Use EXCLUSIVE at checkout for a special offer.",
-          probability: 0.05,
+          probability: 0.03,
           colour: "#ffffff",
         },
         {
@@ -131,8 +131,16 @@
           text: "Jackpot $100",
           value: "JACKPOT",
           subtitle: "You just won $100. We'll email you the details!",
-          probability: 0.05,
+          probability: 0.02,
           colour: "#fc2b46",
+        },
+        {
+          title: "You’ve got 3 Free Spins!",
+          text: "Free Spin×3",
+          value: "FREE_SPIN_3",
+          subtitle: "Enjoy three free spins on the house!",
+          probability: 0.2,
+          colour: "#ffffff",
         },
       ],
     };
@@ -303,13 +311,13 @@
       flex-direction: column;
       align-items: center;
       gap: 6px;
-      padding: 16px 0;
+      padding: 14px 12px;
       background: #ffffff;
       color: #1d1d1d;
-      border-radius: 18px;
-      width: 100%;
+      border-radius: 16px;
+      width: 88%;
+      margin: 0 auto;
       box-sizing: border-box;
-      cursor: pointer;
     }
 
     .reward-main {
@@ -321,31 +329,6 @@
       padding: 0 20px;
       font-size: 14px;
       font-weight: 500;
-    }
-
-    .copy-instruction {
-      font-family: 'Proxima Nova', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 100%;
-      letter-spacing: 0%;
-      text-align: center;
-    }
-
-    .copy-btn {
-      display: inline;
-      appearance: none;
-      border: none;
-      background: none;
-      cursor: pointer;
-      font-size: 24px;
-      line-height: 1;
-      color: #1d1d1d;
-      transition: transform 0.1s ease-in-out;
-    }
-
-    .copy-btn:active {
-      transform: scale(0.9);
     }
 
     /* Spin / Claim button */
@@ -384,6 +367,21 @@
     .pulsate-animation {
       animation: pulsate 1.5s 3;
       /* Run 3 times */
+    }
+
+    .cracker {
+      font-size: 48px;
+      animation: celebrate 1s ease-in-out infinite alternate;
+    }
+
+    @keyframes celebrate {
+      0% {
+        transform: rotate(-5deg) scale(0.95);
+      }
+
+      100% {
+        transform: rotate(8deg) scale(1.05);
+      }
     }
 
     /* Shimmer effect for reward box */
@@ -461,21 +459,12 @@
     <div class="reward-wrapper" id="rewardWrapper">
       <span class="shimmer"></span>
       <div class="reward-box ticket" id="rewardBox">
-        <div class="reward-main">
-          <span id="rewardText"></span>
-          <button id="copyBtn" class="copy-btn" title="Copy to clipboard">
-            <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" clip-rule="evenodd"
-                d="M13 13.8444V17.8444C13 18.4444 12.6 18.8444 12 18.8444H3C2.4 18.8444 2 18.4444 2 17.8444V8.84442C2 8.24442 2.4 7.84442 3 7.84442H7V3.84442C7 3.24442 7.4 2.84442 8 2.84442H17C17.6 2.84442 18 3.24442 18 3.84442V12.8444C18 13.4444 17.6 13.8444 17 13.8444H13ZM12 13.8444H8C7.4 13.8444 7 13.4444 7 12.8444V8.84442H3V17.8444H12V13.8444ZM17 3.84442H8V12.8444H17V3.84442Z"
-                fill="#4A4C4C" />
-            </svg>
-          </button>
-        </div>
-        <div class="copy-instruction">Click here to copy the code!</div>
+        <div class="cracker" aria-hidden="true">🎉</div>
+        <div class="reward-main" id="rewardText"></div>
       </div>
     </div>
 
-    <button class="action-btn" id="claimButton">Collect Now</button>
+    <button class="action-btn" id="claimButton">Use Free Spins</button>
   </div>
 
   <script>
@@ -493,13 +482,10 @@
       const rewardBox = document.getElementById('rewardBox');
       const rewardTextEl = document.getElementById('rewardText');
       const rewardSubtextEl = document.getElementById('rewardSubtext');
-      const copyBtn = document.getElementById('copyBtn');
       const closeButtons = document.querySelectorAll('.close-btn');
       const rewardTitleEl = document.getElementById('rewardTitle');
-      const copyInstructionEl = document.querySelector('.copy-instruction');
       let isSpinning = false;
       let currentRotation = 0;
-      const CLOSE_URL = 'wzkr://thisleadstonowhere';
 
       // -------------------- Apply Config --------------------
 
@@ -514,7 +500,8 @@
       } else {
         closeButtons.forEach(btn => {
           btn.addEventListener('click', () => {
-            window.location.href = CLOSE_URL;
+            spinModal.style.display = 'none';
+            rewardModal.style.display = 'none';
           });
         });
       }
@@ -531,11 +518,6 @@
       subtitleEl.textContent = CONFIG.subtitle.text;
       subtitleEl.style.fontSize = CONFIG.subtitle.fontSize;
       subtitleEl.style.color = CONFIG.subtitle.color;
-
-      // Copy instruction color
-      if (copyInstructionEl && CONFIG.copyInstruction.color) {
-        copyInstructionEl.style.color = CONFIG.copyInstruction.color;
-      }
 
       // Action button initial (Spin)
       spinButton.textContent = CONFIG.spinButton.text;
@@ -637,13 +619,8 @@
       }
 
       function chooseReward () {
-        const total = rewards.reduce((acc, r) => acc + r.probability, 0);
-        let rand = Math.random() * total;
-        for (const reward of rewards) {
-          if (rand < reward.probability) return reward;
-          rand -= reward.probability;
-        }
-        return rewards[rewards.length - 1]; // fallback
+        const forced = rewards.find(reward => reward.value === 'FREE_SPIN_3' || reward.text === 'Free Spin×3');
+        return forced || rewards[0];
       }
 
       // Draw wheel segments
@@ -766,8 +743,9 @@
           if (wheelContainer) wheelContainer.style.display = 'none';
 
           rewardTitleEl.textContent = reward.title;
-          rewardTextEl.textContent = reward.value;
-          rewardSubtextEl.textContent = reward.subtitle;
+          rewardTextEl.textContent = reward.title;
+          rewardSubtextEl.textContent = '';
+          rewardSubtextEl.style.display = 'none';
           rewardWrapper.classList.add('visible');
           rewardWrapper.classList.add('shimmer-active');
 
@@ -804,55 +782,6 @@
           }
 
         }, 1000); // 1-second pause before reveal
-      }
-
-      // Copy functionality
-      function copyToClipboard () {
-        const text = rewardTextEl.textContent;
-        if (!text) return;
-
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(text).then(showCopySuccess).catch(() => fallbackCopy(text));
-        } else {
-          fallbackCopy(text);
-        }
-      }
-
-      // Clipboard copy handler for reward box
-      function copyRewardText (e) {
-        // If the click was on the copy button, don't execute this handler
-        if (e && e.target === copyBtn || (e.target.closest && e.target.closest('#copyBtn'))) {
-          return;
-        }
-
-        copyToClipboard();
-      }
-
-      // Add click handler to copy button
-      copyBtn.addEventListener('click', (e) => {
-        e.stopPropagation(); // Prevent the reward box click handler from firing
-        copyToClipboard();
-      });
-
-      // Add click handler to the entire reward box
-      rewardWrapper.addEventListener('click', copyRewardText);
-
-      function showCopySuccess () {
-        copyInstructionEl.textContent = "Code copied!";
-        copyInstructionEl.style.color = CONFIG.copyInstruction.copiedColor;
-      }
-
-      function fallbackCopy (text) {
-        const input = document.createElement('input');
-        input.setAttribute('readonly', '');
-        input.setAttribute('value', text);
-        input.style.position = 'absolute';
-        input.style.left = '-9999px';
-        document.body.appendChild(input);
-        input.select();
-        document.execCommand('copy');
-        document.body.removeChild(input);
-        showCopySuccess();
       }
 
       // Confetti (same implementation as scratch_card, with minor tweaks)
