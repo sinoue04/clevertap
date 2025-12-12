@@ -71,77 +71,13 @@
       //   • colour – segment background colour
       rewards: [
         {
-          title: "Congrats! You just won a Promo Code!",
-          text: "10% OFF",
-          value: "DISCOUNT10",
-          subtitle: "Use DISCOUNT10 at checkout to get 10% off your order. Valid through April 30.",
-          probability: 0.15,
-          colour: "#ffffff",
-        },
-        {
-          title: "Congrats! You just won a Free Shipping!",
-          text: "Free Shipping",
-          value: "FREESHIP",
-          subtitle: "Use FREESHIP at checkout to enjoy free shipping on your order. Valid through April 30.",
-          probability: 0.15,
-          colour: "#fc2b46",
-        },
-        {
-          title: "Congrats! You just won a Buy 1 Get 1 Free!",
-          text: "Buy 1 Get 1 Free",
-          value: "B1G1",
-          subtitle: "Use B1G1 at checkout and get another item free. Valid through April 30.",
-          probability: 0.15,
-          colour: "#ffffff",
-        },
-        {
-          title: "Congrats! You just won a Early Access!",
-          text: "Early Access",
-          value: "EARLY",
-          subtitle: "Enjoy early access to new arrivals.",
-          probability: 0.15,
-          colour: "#E3B316",
-        },
-        {
-          title: "Congrats! You just won a $5 Credit!",
-          text: "$5 Credit",
-          value: "CREDIT5",
-          subtitle: "Congratulations! $5 store credit will be applied to your account.",
-          probability: 0.15,
-          colour: "#ffffff",
-        },
-        {
-          title: "Congrats! You just won a Mystery Gift!",
-          text: "Mystery Gift",
-          value: "MYSTERY",
-          subtitle: "A surprise gift will be sent with your next purchase!",
-          probability: 0.15,
-          colour: "#fc2b46",
-        },
-        {
-          title: "Congrats! You just won a Exclusive Code!",
-          text: "Exclusive Code",
-          value: "EXCLUSIVE",
-          subtitle: "Use EXCLUSIVE at checkout for a special offer.",
-          probability: 0.03,
-          colour: "#ffffff",
-        },
-        {
-          title: "Congrats! You just won a Jackpot!",
-          text: "Jackpot $100",
-          value: "JACKPOT",
-          subtitle: "You just won $100. We'll email you the details!",
-          probability: 0.02,
-          colour: "#fc2b46",
-        },
-        {
           title: "You’ve got 3 Free Spins!",
           text: "Free Spin×3",
           value: "FREE_SPIN_3",
           subtitle: "Enjoy three free spins on the house!",
-          probability: 0.2,
+          probability: 1,
           colour: "#ffffff",
-        },
+        }
       ],
     };
   </script>
@@ -310,8 +246,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 6px;
-      padding: 14px 12px;
+      gap: 8px;
+      padding: 20px 0;
       background: #ffffff;
       color: #1d1d1d;
       border-radius: 16px;
@@ -619,8 +555,7 @@
       }
 
       function chooseReward () {
-        const forced = rewards.find(reward => reward.value === 'FREE_SPIN_3' || reward.text === 'Free Spin×3');
-        return forced || rewards[0];
+        return rewards[0];
       }
 
       // Draw wheel segments
@@ -743,9 +678,8 @@
           if (wheelContainer) wheelContainer.style.display = 'none';
 
           rewardTitleEl.textContent = reward.title;
-          rewardTextEl.textContent = reward.title;
-          rewardSubtextEl.textContent = '';
-          rewardSubtextEl.style.display = 'none';
+          rewardTextEl.textContent = reward.text;
+          rewardSubtextEl.textContent = reward.subtitle;
           rewardWrapper.classList.add('visible');
           rewardWrapper.classList.add('shimmer-active');
 
