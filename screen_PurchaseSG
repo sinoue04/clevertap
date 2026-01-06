@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SG Benefits</title>
+<style>
+a:link, a:visited {
+color: #0052FF;
+font-weight: 600;
+}
+
+body {
+font-family: '-apple-system', 'HelveticaNeue';
+line-height: 1.5;
+font-size: 19px;
+font-style: normal;
+font-weight: 400;
+line-height: 23px;
+margin: 0px; /* to avoid the 8px default margin applied by webkit */
+margin-bottom: 32px;
+}
+
+.container {
+width: 100%;
+box-sizing: border-box;
+}
+
+em {
+color: #EC4B4A;
+font-style: normal;
+}
+
+img {
+width: 100%;
+margin: 20px 0px;
+display: block;
+}
+
+.title, ol li::marker {
+font-size: 25px;
+font-style: normal;
+font-weight: 600;
+line-height: 30px;
+margin-top: 32px;
+margin-bottom: 16px;
+}
+
+ol {
+padding: 0px 16px;
+list-style-position: inside;
+}
+
+ol li {
+margin: 32px 0px;
+}
+
+p {
+margin-top: 12px;
+margin-bottom: 12px;
+}
+
+ul.benefits {
+list-style-type: none;
+margin: 10px 0px;
+padding-left: 0px;
+}
+
+/* List item with a custom bullet point image */
+ul.benefits li {
+align-items: center;
+background-image: url(https://assets.prod.leanplum.com/app_a1Ms09t5gNvuFBVBEg39bBxTnR7fNWKmsoqoz8UKEJ0/YmVuZWZpdHNfY2hlY2ttYXJrX2ltZy5zdmc=);
+background-position: left center;
+background-repeat: no-repeat;
+background-size: 44px auto;
+display: flex;
+min-height: 44px;
+margin: 10px 0px;
+padding-left: 54px; /* 44px + 10px */
+}
+
+.underline {
+text-decoration: underline;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+<ol>
+<li>
+<span class="title">Benefits of holding more SG</span>
+<p>The more SG you hold</p>
+<ul class="benefits">
+<li>The more your withdrawal allowance will automatically increase</li>
+<li>The more Staking APY you get</li>
+</ul>
+</li>
+<li>
+<span class="title">Get valuable SG here — take as much as you want!</span>
+<p>The above benefits only apply to the SG you get HERE.</p>
+<p>Here, you can get SG at better rates and conditions than other exchanges.</p>
+</li>
+<li>
+<span class="title">Earn up to 10% Staking Rewards!</span>
+<p>We will add <em>staking rewards to your wallet every month</em> based on the amount of SG in your wallet. The gas fees are covered by us.</p>
+<img
+src="https://assets.prod.leanplum.com/app_a1Ms09t5gNvuFBVBEg39bBxTnR7fNWKmsoqoz8UKEJ0/MjUwMjEyX3N0YWtpbmdfcmV3YXJkQDR4LnBuZw=="
+alt="Staking Reward">
+<a href="https://socialgood.inc/staking_guide/">👉 Please see the Staking Guide (2025)</a>
+</li>
+<li>
+<span class="title">Exclusive limited-time bonus</span>
+
+<p>Buy $200 or more worth of SG in a single transaction and receive $2,000 bonus!</p>
+<a href="https://socialgood.inc/rarity-of-the-sg-202406/">👉 The Rarity of the growing crypto SG</a>
+</li>
+<li>
+<span class="title">🎁 Buy SG Before Jan 05 & Get a $100 W Bonus</span>
+<img
+src="https://dkcgfz454xnre.cloudfront.net/1723516160/assets/804ddb1734ce414c93a97e13757c09ff.jpg"
+alt="buysg100_get100w">
+<p>⏰ Deadline: January 05 (UTC)</p>
+<p>This lets you grow your SG balance and enjoy Spins afterward with a risk-free Withdrawable bonus.</p>
+<a href="https://socialgood.inc/20251127_01/">👉 More Detail</a>
+</li>
+
+<p>　</p>
+</ol> 
+</div>
+</body>
+
+</html>
